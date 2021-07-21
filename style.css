@@ -1,4 +1,13 @@
 body {
-    text-align: center;
-    
+    height: 95vh; /*vh = viewport height; vw = viewport width*/
+    width: 95;
+    display: flex; /*prática de flexbox*/
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /*inverte coluna e linha*/
+    color: rgb(6, 54, 6);
+}
+
+h1 {
+    text-transform: uppercase;
 }
