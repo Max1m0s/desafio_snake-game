@@ -45,10 +45,21 @@ function update (event) {
 }
 
 function iniciarJogo() {
+    //direções de controle da cobra
     if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0; //delimita o campo, evitando que a cobra suma da tela e reapareça no lado oposto
     if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
     if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
+
+    
+    //loop for para checar se cada coordenada se choca com i (corpo da cobra)
+    for(i = 1; i < snake.length; i ++) {
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+            clearInterval(jogo);
+            alert('Game Over :(');
+        }
+    }
+
 
     criarBG();
     criarCobrinha();
@@ -69,11 +80,11 @@ function iniciarJogo() {
         //função PP, retira o último elemento do array
         snake.pop();
     }
-    else {
+    else { //a fruta reaparece em lugar aleatório depois de comida pela cobra
         food.x = Math.floor(Math.random() * 15 + 1) * box,
         food.y = Math.floor(Math.random() * 15 + 1) * box
     }    
-    //acrescenta m elemento à frente do array, ou seja, a cabeça
+    //acrescenta um elemento à frente do array, ou seja, a cabeça
     let newHead = {
         x: snakeX,
         y: snakeY
